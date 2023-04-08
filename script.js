@@ -2,6 +2,7 @@ const submitButton = document.getElementById("submitButton");
 const inputText = document.getElementById("inputText");
 const apiUrl = "https://us-central1-famous-sunbeam-382202.cloudfunctions.net/function-3";
 const loadingSpinner = document.getElementById("loadingSpinner");
+const audioContainer = document.getElementById("audioContainer");
 let audioContext;
 
 submitButton.addEventListener("click", async () => {
@@ -24,12 +25,22 @@ submitButton.addEventListener("click", async () => {
             });
 
             if (response.ok) {
-                const arrayBuffer = await response.arrayBuffer();
-                const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+                const blob = await response.blob();
+                const audioURL = URL.createObjectURL(blob);
+
+                const audioBuffer = await audioContext.decodeAudioData(await blob.arrayBuffer());
                 const source = audioContext.createBufferSource();
                 source.buffer = audioBuffer;
                 source.connect(audioContext.destination);
                 source.start();
+
+                // Embed the MP3 on the page
+                const audioElement = document.createElement("audio");
+                audioElement.src = audioURL;
+                audioElement.controls = true;
+                audioContainer.innerHTML = ""; // Remove the previous audio element if there is one
+                audioContainer.appendChild(audioElement);
+
             } else {
                 console.error("Error fetching the MP3 data.");
             }
