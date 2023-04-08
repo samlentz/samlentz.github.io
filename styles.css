@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f2f2f2;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+textarea {
+    width: 400px;
+    height: 200px;
+    resize: none;
+    padding: 10px;
+    font-size: 18px;
+}
+
+button {
+    width: 100px;
+    padding: 10px;
+    background-color: #1e90ff;
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+button:hover {
+    background-color: #0073e6;
+}
