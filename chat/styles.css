@@ -16,6 +16,19 @@ body {
     height: 80vh;
 }
 
+@media (max-width: 768px) {
+    body {
+        background-color: #fff;
+    }
+
+    .chat-container {
+        max-width: 100%;
+        margin: 0;
+        height: 100vh;
+        border-radius: 0;
+    }
+}
+
 .chatbox {
     flex: 1;
     overflow-y: auto;
