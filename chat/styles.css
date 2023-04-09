@@ -1,8 +1,16 @@
+/* Add the following line to your styles.css */
+html {
+    height: 100%;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     margin: 0;
     padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .chat-container {
@@ -13,8 +21,11 @@ body {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    height: 80vh;
+    flex-grow: 1;
+    overflow: hidden;
 }
+/* ... rest of your CSS code ... */
+
 
 @media (max-width: 768px) {
     body {
