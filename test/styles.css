@@ -26,6 +26,29 @@ body {
 }
 /* ... rest of your CSS code ... */
 
+.profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+
+.contact-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 10px 15px;
+    border-bottom: 1px solid #ccc;
+}
+
 
 @media (max-width: 768px) {
     body {
@@ -93,26 +116,4 @@ button {
     color: #333;
     align-self: flex-start;
     margin-left: 15px;
-}
-.header {
-    display: flex;
-    align-items: center;
-    background-color: #f0f0f0;
-    padding: 10px 15px;
-    border-bottom: 1px solid #ccc;
-}
-
-.profile-picture {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 10px;
-}
-
-
-.contact-name {
-    font-size: 16px;
-    font-weight: 600;
-    color: #333;
 }
