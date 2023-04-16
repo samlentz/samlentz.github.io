@@ -1,0 +1,96 @@
+/* Add the following line to your styles.css */
+html {
+    height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
+}
+/* ... rest of your CSS code ... */
+
+
+@media (max-width: 768px) {
+    body {
+        background-color: #fff;
+    }
+
+    .chat-container {
+        max-width: 100%;
+        margin: 0;
+        height: 100vh;
+        border-radius: 0;
+    }
+}
+
+.chatbox {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container {
+    display: flex;
+    margin-top: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.user, .assistant {
+    font-size: 16px;
+    line-height: 1.4;
+    max-width: 70%;
+    display: inline-block;
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.user {
+    background-color: #007bff;
+    color: #fff;
+    align-self: flex-end;
+    margin-right: 15px;
+}
+
+.assistant {
+    background-color: #f0f0f0;
+    color: #333;
+    align-self: flex-start;
+    margin-left: 15px;
+}
