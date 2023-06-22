@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Office Ping Pong ELO</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Office Ping Pong ELO</h1>
+        <input type="password" id="password" placeholder="Enter password">
+        <div class="buttons">
+            <button id="leaderboard-button">Leaderboard</button>
+            <button id="submit-match-button">Submit Match</button>
+        </div>
+        <div id="leaderboard-section" class="hidden">
+            <table id="leaderboard-table"></table>
+        </div>
+        <div id="match-section" class="hidden">
+            <select id="winner-dropdown"></select>
+            <select id="loser-dropdown"></select>
+            <button id="submit-match" disabled>Submit</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
