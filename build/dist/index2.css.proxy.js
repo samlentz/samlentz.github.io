@@ -1,0 +1,10 @@
+// [snowpack] add styles to the page (skip if no document exists)
+if (typeof document !== 'undefined') {
+  const code = "\n \n\nbody {\n    background: linear-gradient(45deg, #282a36, #424a79, #8c62a4);\n    \n    height: 1%;\n    animation: gradient 5s ease infinite;\n    color: #f8f8f2;\n    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n  }\n  \n  @keyframes gradient {\n    0% {background-position: 0% 50%;}\n    50% {background-position: 100% 50%;}\n    100% {background-position: 0% 50%;}\n  }\n  \n  table {\n    border-spacing: 0;\n    width: 100%;\n    margin-bottom: 1rem;\n    color: #8be9fd;\n    background: linear-gradient(120deg, #44475a, #6272a4, #282a36);\n    background-size: 600% 600%;\n    border-radius: 0.25rem;\n    overflow: hidden;\n  }\n  \n  th, td {\n    padding: 0.75rem;\n    vertical-align: top;\n    border-top: 1px solid #6272a4;\n  }\n  \n  th {\n    color:white;\n    text-shadow: 2px 2px 5px #bd93f9;\n    border-bottom: 2px solid #6272a4;\n    background: linear-gradient(120deg, #44475a, #6272a4, #282a36);\n    background-size: 600% 600%;\n  }\n  \n  td {\n    color: #ffebfd;\n  }\n  \n  button {\n    color: #f8f8f2;\n    background: linear-gradient(120deg, #bd93f9, #6272a4, #44475a);\n    background-size: 300% 300%;\n    border: none;\n    border-radius: 3px;\n    padding: 10px 20px;\n    cursor: pointer;\n    text-align: center;\n    text-decoration: none;\n    display: inline-block;\n    font-size: 16px;\n    margin: 4px 2px;\n    transition-duration: 0.4s;\n  }\n  \n  button:hover {\n    background-color: #44475a;\n    color: #000000;\n  }\n    input {\n        color: #f8f8f2;\n        background: linear-gradient(120deg, #bd93f9, #6272a4, #44475a);\n        background-size: 300% 300%;\n        font-size: 16px;\n        padding: 10px 20px;\n        margin: 10px 2px;\n\n}\nlabel\n{\n    color: #f8f8f2;\n    font-size: 16px;\n    padding: 10px 20px;\n    margin: 10px 2px;\n}\n";
+
+  const styleEl = document.createElement("style");
+  const codeEl = document.createTextNode(code);
+  styleEl.type = 'text/css';
+  styleEl.appendChild(codeEl);
+  document.head.appendChild(styleEl);
+}

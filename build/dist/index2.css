@@ -1,0 +1,83 @@
+
+ 
+
+body {
+    background: linear-gradient(45deg, #282a36, #424a79, #8c62a4);
+    
+    height: 1%;
+    animation: gradient 5s ease infinite;
+    color: #f8f8f2;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  @keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+  
+  table {
+    border-spacing: 0;
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #8be9fd;
+    background: linear-gradient(120deg, #44475a, #6272a4, #282a36);
+    background-size: 600% 600%;
+    border-radius: 0.25rem;
+    overflow: hidden;
+  }
+  
+  th, td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #6272a4;
+  }
+  
+  th {
+    color:white;
+    text-shadow: 2px 2px 5px #bd93f9;
+    border-bottom: 2px solid #6272a4;
+    background: linear-gradient(120deg, #44475a, #6272a4, #282a36);
+    background-size: 600% 600%;
+  }
+  
+  td {
+    color: #ffebfd;
+  }
+  
+  button {
+    color: #f8f8f2;
+    background: linear-gradient(120deg, #bd93f9, #6272a4, #44475a);
+    background-size: 300% 300%;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+  }
+  
+  button:hover {
+    background-color: #44475a;
+    color: #000000;
+  }
+    input {
+        color: #f8f8f2;
+        background: linear-gradient(120deg, #bd93f9, #6272a4, #44475a);
+        background-size: 300% 300%;
+        font-size: 16px;
+        padding: 10px 20px;
+        margin: 10px 2px;
+
+}
+label
+{
+    color: #f8f8f2;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 10px 2px;
+}
