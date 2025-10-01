@@ -605,7 +605,7 @@ function createCard(day, style, font) {
     ctx.textAlign = 'center';
     ctx.fillStyle = textColor;
     ctx.globalAlpha = 0.6;
-    ctx.fillText('acl-schedule.com', canvas.width / 2, canvas.height - 80);
+    ctx.fillText('samlentz.github.io', canvas.width / 2, canvas.height - 80);
     ctx.globalAlpha = 1;
 
     return canvas;
