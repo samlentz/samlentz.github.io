@@ -3,19 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAMAI</title>
+    <title>Austin City Limits - My Schedule</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Ask me a question</h1>
-        <textarea id="inputText" placeholder="Type your text here..."></textarea>
-        <button id="submitButton">Submit</button>
-        <div id="loadingSpinner"></div>
-        <div id="audioContainer"></div>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1>AUSTIN CITY LIMITS</h1>
+                <p class="subtitle">October 3-5, 2025</p>
+            </div>
+        </header>
 
+        <!-- Comparison Banner (shown when viewing someone's shared schedule) -->
+        <div id="comparison-banner" class="comparison-banner hidden">
+            <div class="comparison-content">
+                <p><strong id="friend-name">Your Friend</strong>'s Schedule</p>
+                <button id="compare-btn" class="btn-secondary">Compare with Mine</button>
+                <button id="clear-share-btn" class="btn-text">View My Schedule</button>
+            </div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <nav class="tabs">
+            <button class="tab active" data-day="all">All Days</button>
+            <button class="tab" data-day="Friday">Friday</button>
+            <button class="tab" data-day="Saturday">Saturday</button>
+            <button class="tab" data-day="Sunday">Sunday</button>
+        </nav>
+
+        <!-- Filter by Stage -->
+        <div class="filter-section">
+            <label for="stage-filter">Filter by Stage:</label>
+            <select id="stage-filter">
+                <option value="all">All Stages</option>
+            </select>
+        </div>
+
+        <!-- Schedule Container -->
+        <div id="schedule-container" class="schedule-container">
+            <!-- Will be populated by JavaScript -->
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button id="share-btn" class="btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                    <polyline points="16 6 12 2 8 6"></polyline>
+                    <line x1="12" y1="2" x2="12" y2="15"></line>
+                </svg>
+                Share My Schedule
+            </button>
+            <button id="create-card-btn" class="btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+                Create Card
+            </button>
+        </div>
+
+        <!-- Share Modal -->
+        <div id="share-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Share Your Schedule</h2>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Share this link with your friends:</p>
+                    <div class="share-link-container">
+                        <input type="text" id="share-link" readonly>
+                        <button id="copy-link-btn" class="btn-secondary">Copy</button>
+                    </div>
+                    <p class="share-hint">They'll be able to see your schedule and compare it with theirs!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Creator Modal -->
+        <div id="card-modal" class="modal hidden">
+            <div class="modal-content modal-wide">
+                <div class="modal-header">
+                    <h2>Create Your ACL Card</h2>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="card-options">
+                        <label class="card-option">
+                            <input type="radio" name="card-type" value="friday">
+                            <span>Friday Only</span>
+                        </label>
+                        <label class="card-option">
+                            <input type="radio" name="card-type" value="saturday">
+                            <span>Saturday Only</span>
+                        </label>
+                        <label class="card-option">
+                            <input type="radio" name="card-type" value="sunday">
+                            <span>Sunday Only</span>
+                        </label>
+                    </div>
+
+                    <div class="card-style-options">
+                        <h3>Card Style:</h3>
+                        <div class="style-selector">
+                            <label class="style-option">
+                                <input type="radio" name="card-style" value="gradient" checked>
+                                <span>Gradient</span>
+                            </label>
+                            <label class="style-option">
+                                <input type="radio" name="card-style" value="dark">
+                                <span>Dark</span>
+                            </label>
+                            <label class="style-option">
+                                <input type="radio" name="card-style" value="classic">
+                                <span>Classic</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="card-font-options">
+                        <h3>Font Style:</h3>
+                        <div class="font-selector">
+                            <label class="font-option">
+                                <input type="radio" name="card-font" value="modern" checked>
+                                <span>Modern</span>
+                            </label>
+                            <label class="font-option">
+                                <input type="radio" name="card-font" value="retro">
+                                <span>Retro</span>
+                            </label>
+                            <label class="font-option">
+                                <input type="radio" name="card-font" value="elegant">
+                                <span>Elegant</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="card-preview" class="card-preview">
+                        <!-- Canvas will be inserted here -->
+                    </div>
+
+                    <div class="card-actions">
+                        <button id="download-card-btn" class="btn-primary">Download Card(s)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Modal -->
+        <div id="comparison-modal" class="modal hidden">
+            <div class="modal-content modal-wide">
+                <div class="modal-header">
+                    <h2>Schedule Comparison</h2>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="comparison-stats">
+                        <div class="stat-card">
+                            <div class="stat-number" id="shared-count">0</div>
+                            <div class="stat-label">Shared Artists</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="your-unique-count">0</div>
+                            <div class="stat-label">Only You</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="their-unique-count">0</div>
+                            <div class="stat-label">Only Them</div>
+                        </div>
+                    </div>
+                    <div id="comparison-details" class="comparison-details">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <script src="script.js"></script>
-</body>
 
+    <script src="app.js"></script>
+</body>
 </html>
