@@ -600,7 +600,7 @@ function createCard(day, style, font) {
         ctx.globalAlpha = 1;
     }
 
-    // Draw footer
+    // Draw footers
     ctx.font = currentFonts.time;
     ctx.textAlign = 'center';
     ctx.fillStyle = textColor;
